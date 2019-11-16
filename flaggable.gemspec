@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.name        = "flaggable"
   spec.version     = Flaggable::VERSION
   spec.authors     = ["Jeremy Baker"]
-  spec.email       = ["jhubert@gmail.com"]
+  spec.email       = ["jeremy@retailzipline.com"]
   spec.homepage    = "https://github.com/retailzipline/flaggable"
   spec.summary     = "A rails engine for flagging and reviewing content"
   spec.description = "A moderation system for flagging and reviewing content in a rails application"
