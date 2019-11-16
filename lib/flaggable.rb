@@ -1,4 +1,4 @@
-require "flaggable/railtie"
+require "flaggable/engine"
 require "flaggable/acts_as_flaggable"
 
 module Flaggable
