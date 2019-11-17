@@ -1,0 +1,4 @@
+profane:
+  flaggable: clean (Comment)
+  reason: Profane
+  status: 0

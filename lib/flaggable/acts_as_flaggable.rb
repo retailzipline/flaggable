@@ -3,7 +3,7 @@ module Flaggable
     extend ActiveSupport::Concern
 
     included do
-      has_many :flagged_items, as: :flaggable
+      has_many :flagged_items, class_name: 'Flaggable::FlaggedItem', as: :flaggable
 
       after_commit :flaggable_check
     end
@@ -14,7 +14,7 @@ module Flaggable
       end.each do |column|
         content = send(column.name)
 
-        next unless FlaggedItem.flagged?(content)
+        next unless Flaggable::Filter.match?(content)
 
         flagged_items.create!(reason: 'Profane', preview: content)
       end
