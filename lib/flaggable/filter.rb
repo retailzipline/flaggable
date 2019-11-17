@@ -6,13 +6,17 @@ module Flaggable
 
     class << self
       def match?(content)
-        content =~ profane_content_pattern
+        profane_content_pattern.match?(content)
       end
 
       def profane_content_pattern
         @@profane_content_pattern ||= begin
           phrases = YAML.load_file(@@profane_content_dictionary)
-          Regexp.new('(\b|^)' + Regexp.union(phrases).to_s + '(\b|$)')
+
+          Regexp.new(
+            '\b(' + Regexp.union(phrases).source + ')\b',
+            Regexp::MULTILINE | Regexp::IGNORECASE
+          )
         end
       end
     end
