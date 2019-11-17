@@ -4,9 +4,31 @@ module Flaggable
 
     @@profane_content_dictionary  = File.join(File.dirname(__FILE__), '../../config/profane_content_dictionary.yml')
 
+    def initialize(content)
+      @content = content
+      @idx = nil
+    end
+
+    def match?
+      @idx = @content =~ self.class.profane_content_pattern
+
+      !@idx.nil?
+    end
+
+    # Extract the text around the match so that we can store
+    # it for quick reference when reviewing the transgression
+    def sample
+      return nil if @idx.nil?
+
+      startpos = @idx > 10 ? @idx - 10 : 0
+      endpos = @idx + 20
+
+      @content[startpos, endpos]
+    end
+
     class << self
       def match?(content)
-        profane_content_pattern.match?(content)
+        new(content).match?
       end
 
       def profane_content_pattern

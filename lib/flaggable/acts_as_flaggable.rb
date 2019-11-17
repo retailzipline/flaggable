@@ -12,11 +12,11 @@ module Flaggable
       self.class.columns.select do |column|
         %i[text string].include?(column.type)
       end.each do |column|
-        content = send(column.name)
+        filter = Flaggable::Filter.new(send(column.name))
 
-        next unless Flaggable::Filter.match?(content)
+        next unless filter.match?
 
-        flagged_items.create!(reason: 'Profane', preview: content)
+        flagged_items.create!(reason: 'Profane', preview: filter.sample)
       end
     end
   end
