@@ -20,10 +20,10 @@ module Flaggable
     def sample
       return nil if @idx.nil?
 
-      startpos = @idx > 10 ? @idx - 10 : 0
+      startpos = @idx >= 20 ? @idx - 20 : 0
       endpos = @idx + 20
 
-      @content[startpos, endpos]
+      @content[startpos...endpos]
     end
 
     class << self
