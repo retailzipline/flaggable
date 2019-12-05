@@ -37,5 +37,10 @@ There is plenty of opportunity to build on this:
 - Extend the checking behavior to an optional background job
 - Reports, Alerts, and Slack Notifications
 
+When you are ready to publish the gem, do the following:
+
+1. Bump the version according to semantic versioning
+2. Run bin/publish to build the gem and push it to github's package server
+
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

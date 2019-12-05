@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+print "Building the gem..."
+output = `gem build flaggable.gemspec`
+filename = output.scan(/File\:\ ([\w\d\.\-]+)/).first&.first
+
+if filename
+  puts "DONE: #{filename}"
+
+  print "Pushing the gem to github..."
+  `gem push --key github --host https://rubygems.pkg.github.com/retailzipline #{filename}`
+  puts "DONE"
+else
+  puts "FAILED"
+end
