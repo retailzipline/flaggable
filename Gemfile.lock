@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     flaggable (0.2.3)
-      rails (>= 5.2)
+      rails (>= 7.0)
 
 GEM
   remote: https://rubygems.org/
